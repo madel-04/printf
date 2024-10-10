@@ -10,47 +10,92 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	ft_strlen(const char *str)
+int	print_char(int c)
 {
-	size_t	len;
-
-	len = 0;
-	while (str[len] != '\0')
-		len++;
-	return (len);
+	return (write(1, &c, 1));
 }
 
-void	ft_putchar_fd(char c, int fd)
+int	print_str(char *str)
 {
-	write(fd, &c, 1);
-}
+	int	i;
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	write(fd, s, ft_strlen(s));
-}
-
-void	ft_putnbr_fd(int n, int fd)
-{
-	if (n == -2147483648)
+	i = 0;
+	while (*str)
 	{
-		ft_putchar_fd('-', fd);
-		ft_putchar_fd('2', fd);
-		ft_putstr_fd("147483648", fd);
+		print_char((int)*str);
+		++i;
+		++str;
 	}
-	else if (n < 0)
+	return (i);
+}
+
+int	print_digit(long n, int base)
+{
+	int		i;
+	char	*symbols;
+
+	symbols = "0123456789abcdef";
+	if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-		ft_putnbr_fd(n, fd);
+		write(1, "-", 1);
+		return (print_digit(-n, base) + 1);
 	}
-	else if (n < 10)
-		ft_putchar_fd(n + '0', fd);
+	else if (n < base)
+		return (print_char(symbols[n]));
 	else
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(n % 10 + '0', fd);
+		i = print_digit(n / base, base);
+		return (i + print_digit(n % base, base));
 	}
+}
+
+int	print_digit_noline(long n, int base)
+{
+	int		i;
+	char	*symbols;
+
+	symbols = "0123456789abcdef";
+	if (n < 0)
+	{
+		return (print_digit(-n, base) + 1);
+	}
+	else if (n < base)
+		return (print_char(symbols[n]));
+	else
+	{
+		i = print_digit(n / base, base);
+		return (i + print_digit(n % base, base));
+	}
+}
+
+int	print_digit_may(long n, int base)
+{
+	int		i;
+	char	*symbols;
+
+	symbols = "0123456789ABCDEF";
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		return (print_digit(-n, base) + 1);
+	}
+	else if (n < base)
+		return (print_char(symbols[n]));
+	else
+	{
+		i = print_digit(n / base, base);
+		return (i + print_digit(n % base, base));
+	}
+}
+
+int print_voidpointer(va_list ap)
+{
+	unsigned long	ptr;
+
+	ptr = va_arg(ap, unsigned long);
+	if (ptr)
+		return (print_digit((long)ptr, 16));
+	return (print_str("(nil)"));
 }

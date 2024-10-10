@@ -21,7 +21,7 @@ SRC			= printf_utils.c \
 OBJ			= $(SRC:%.c=%.o)
 
 
-INCLUDE		= libftprintf.h
+INCLUDE		= ft_printf.h
 
 all: $(NAME)
 
