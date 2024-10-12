@@ -10,13 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-LIB			= ar rcs
+AR			= ar rcs
 RM			= rm -f
 CC			= cc
 CFLAGS		= -Wall -Wextra -Werror
 NAME		= libftprintf.a
 
-SRC			= printf_utils.c \
+SRC			= ft_printf_utils.c \
+				ft_printf.c \
+				ft_voider.c \
 
 OBJ			= $(SRC:%.c=%.o)
 
@@ -26,7 +28,7 @@ INCLUDE		= ft_printf.h
 all: $(NAME)
 
 $(NAME): $(OBJ) $(INCLUDE)
-		$(LIB) $(NAME) $(OBJ)
+		$(AR) $(NAME) $(OBJ)
 
 %.o: %.c $(INCLUDE)
 	$(CC) $(CFLAGS) -c $< -o $@

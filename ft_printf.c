@@ -22,7 +22,7 @@ static int	print_format(char specifier, va_list ap)
 	else if (specifier == 's')
 		count += print_str(va_arg(ap, char *));
 	else if (specifier == 'p')
-		count += print_voidpointer(va_list ap, char specifier);
+		count += print_voidpointer(ap);
 	else if (specifier == 'd')
 		count += print_digit((long)(va_arg(ap, int)), 10);
 	else if (specifier == 'i')

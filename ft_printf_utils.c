@@ -89,13 +89,3 @@ int	print_digit_may(long n, int base)
 		return (i + print_digit(n % base, base));
 	}
 }
-
-int print_voidpointer(va_list ap)
-{
-	unsigned long	ptr;
-
-	ptr = va_arg(ap, unsigned long);
-	if (ptr)
-		return (print_digit((long)ptr, 16));
-	return (print_str("(nil)"));
-}
