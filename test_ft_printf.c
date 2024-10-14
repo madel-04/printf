@@ -81,8 +81,8 @@ int main(void)
     res2 = ft_printf("%%\n");
     if (res1 == res2) correct_tests++;
 
-    printf("a%ib%ic%id", 1, -2, 3);
-    ft_printf("a%ib%ic%id", 1, -2, 3);
+    printf(" %p %p ", LONG_MIN, LONG_MAX);
+    ft_printf(" %p %p ", LONG_MIN, LONG_MAX);
     // Resultados finales
     printf("\nResultados: %d/%d pruebas correctas\n", correct_tests, num_tests);
     return 0;

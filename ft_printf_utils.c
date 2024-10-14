@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   printf_utils.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2024/09/26 12:35:16 by marvin            #+#    #+#             */
 /*   Updated: 2024/09/26 12:35:16 by marvin           ###   ########.fr       */
 /*                                                                            */
@@ -22,6 +25,8 @@ int	print_str(char *str)
 	int	i;
 
 	i = 0;
+	if (!str)
+		return (print_str("(null)"));
 	while (*str)
 	{
 		print_char((int)*str);
