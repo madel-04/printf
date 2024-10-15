@@ -30,9 +30,9 @@ static int	print_format(char specifier, va_list ap)
 	else if (specifier == 'u')
 		count += print_digit_noline((long)(va_arg(ap, int)), 10);
 	else if (specifier == 'x')
-		count += print_digit((long)(va_arg(ap, unsigned int)), 16);
+		count += print_digit((unsigned long)(va_arg(ap, unsigned int)), 16);
 	else if (specifier == 'X')
-		count += print_digit_may((long)(va_arg(ap, unsigned int)), 16);
+		count += print_digit_may((unsigned long)(va_arg(ap, unsigned int)), 16);
 	else if (specifier == '%')
 		count += print_char('%');
 	else

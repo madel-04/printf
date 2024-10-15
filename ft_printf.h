@@ -26,7 +26,7 @@ int	print_char(int c);
 int	print_str(char *str);
 int	print_digit(long n, int base);
 int	print_digit_noline(long n, int base);
-int	print_digit_may(long n, int base);
+int print_digit_may(unsigned long n, unsigned int base);
 int	print_voidpointer(va_list ap);
 int	ft_printf(const char *format, ...);
 

@@ -56,41 +56,41 @@ int	print_digit(long n, int base)
 	}
 }
 
-int	print_digit_noline(long n, int base)
+int	print_digit_noline(long n, int base) //
 {
 	int		i;
 	char	*symbols;
 
 	symbols = "0123456789abcdef";
 	if (n < 0)
+		n = (unsigned int)n;
+	if (n == 0)
 	{
-		return (print_digit(-n, base) + 1);
+		return (print_char('0'));
 	}
 	else if (n < base)
 		return (print_char(symbols[n]));
 	else
 	{
-		i = print_digit(n / base, base);
-		return (i + print_digit(n % base, base));
+		i = print_digit_noline(n / base, base);
+		return (i + print_digit_noline(n % base, base));
 	}
 }
 
-int	print_digit_may(long n, int base)
+int print_digit_may(unsigned long n, unsigned int base)
 {
-	int		i;
-	char	*symbols;
+    int i;
+    char *symbols;
 
-	symbols = "0123456789ABCDEF";
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		return (print_digit(-n, base) + 1);
-	}
-	else if (n < base)
-		return (print_char(symbols[n]));
-	else
-	{
-		i = print_digit(n / base, base);
-		return (i + print_digit(n % base, base));
-	}
+    symbols = "0123456789ABCDEF";
+    if (n == 0)
+        return (print_char('0'));
+    else if (n < base)
+        return (print_char(symbols[n]));
+    else
+    {
+        i = print_digit_may(n / base, base);
+        return (i + print_digit_may(n % base, base));
+    }
 }
+
