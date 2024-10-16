@@ -1,9 +1,5 @@
 #include <stdio.h>
 #include "ft_printf.h"
-
-int main(void)
-{
-#include <stdio.h>
 #include <limits.h>
 
 int main(void)
@@ -20,9 +16,6 @@ int main(void)
     unsigned long *ptr_neg_max = (unsigned long *)negative_max_value; // Convertir -ULONG_MAX a puntero (no recomendable)
 
     printf(" %p %p \n", (void *)ptr_max, (void *)ptr_neg_max); // Casting a void*
-
-    return 0;
-}
 
     return 0;
 }

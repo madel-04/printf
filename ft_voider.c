@@ -14,7 +14,7 @@
 
 int	print_voidpointer(va_list ap)
 {
-	void *ptr;
+	void	*ptr;
 
 	ptr = (unsigned long)va_arg(ap, void *);
 	if (ptr)
@@ -24,4 +24,3 @@ int	print_voidpointer(va_list ap)
 	}
 	return (print_str("(nil)"));
 }
-
