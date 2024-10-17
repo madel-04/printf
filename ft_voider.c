@@ -41,4 +41,3 @@ int	print_voidpointer(va_list ap)
 	}
 	return (print_str("(nil)"));
 }
-
